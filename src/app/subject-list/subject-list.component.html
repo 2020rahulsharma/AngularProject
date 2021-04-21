@@ -1,0 +1,111 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Angular</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body style="background-color: whitesmoke;background-image:url(https://png.pngtree.com/thumb_back/fh260/background/20190727/pngtree-hexagonal-minimalist-white-paper-cut-wind-business-background-image_285716.jpg); background-repeat:no-repeat;width: 100%; background-size: cover">
+
+
+  <br>
+  <div class="container-fluid">
+      <p style="color:red" >{{message}} </p>
+
+
+
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-3"><H1 style="margin-top: -15px;">Subject List</H1></div>
+            <!-- <div class="col-lg-1"></div> -->
+            <div class="col-lg-2">
+                <input [(ngModel)]="form.subjectName"  name="name" type="text" placeholder="Enter youe Subject Name">
+            </div>
+
+            <!-- <div class="col-lg-2">
+                <input [(ngModel)]="form.description"  name="description" type="text" placeholder="enter role description">
+            </div>  -->
+            <div class="col-lg-1">
+                <button (click)="search()">Search
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+
+        </div>
+
+
+<div class="container">
+    <table width="100%">
+    <div class="row">
+        <div class="col-md-12">
+                <table class="table table-sm table-bordered table-hover table-responsive-sm">
+                <thead class="thead-dark">
+
+                    <th>ID</th>
+                    <th>Subject Name</th>
+                    <th>Subject Description</th>
+                    <!-- <th>DOB</th> -->
+                    <!-- <th>Course Id</th> -->
+                    <th>CourseName</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </thead>
+                <tbody>
+                    <tr  *ngFor = "let e of list" >
+                        <td>{{e.id}}</td>
+                        <td>{{e.subjectName}}</td>
+                        <td>{{e.subjectDescription}}</td>
+                        <td>{{e.courseName}}</td>
+                        <td><button (click)="edit(e.id)">Edit</button></td>
+                        <td><button (click)="delete(e.id)">Delete</button></td>
+                      </tr>
+                </tbody>
+            </table>
+            <div class="container">
+                <div class="row">
+
+
+                    <div class="col-lg-11"></div>
+                        <div class="col-lg-11" *ngIf="form.pageNo<=1 ;else pre">
+                            <button disabled (click)="previous()">previous
+                               
+                            </button>
+                        </div>
+                        <ng-template #pre>
+                            <div class="col-lg-11">
+                                <button  (click)="previous()">previous
+                                </button>
+                            </div>
+                        </ng-template>
+            
+                    
+                    
+                        <div class="col-lg-1" *ngIf="this.list.length<5 ;else nextElse">
+                            <button (click)="next()" disabled>Next
+                                
+                            </button>
+                        </div>
+                        <ng-template #nextElse>
+                            <div class="col-lg-1">
+                                <button  (click)="next()">Next 
+                                </button>
+                            </div>
+                        </ng-template>
+            
+
+</div>
+</div>
+
+
+
+
+
